@@ -16,7 +16,7 @@ _ = Translator("MassThings", __file__)
 
 
 @cog_i18n(_)
-class MassThings(commands.Cog, command_attrs={"hidden": True}):
+class MassThings(commands.Cog, command_attrs={"hidden": False}):
     """Cog for doing things in bulk.
 
     May be against Discord API terms. Use with caution.
@@ -53,7 +53,7 @@ class MassThings(commands.Cog, command_attrs={"hidden": True}):
 
     @commands.command()
     @commands.guild_only()
-    @commands.cooldown(1, 300, commands.BucketType.guild)
+    @commands.cooldown(1, 90, commands.BucketType.guild)
     @commands.admin_or_permissions(manage_nicknames=True)
     @commands.bot_has_permissions(manage_nicknames=True)
     async def massnick(self, ctx, *, nickname: str):
@@ -77,7 +77,7 @@ class MassThings(commands.Cog, command_attrs={"hidden": True}):
 
     @commands.command()
     @commands.guild_only()
-    @commands.cooldown(1, 300, commands.BucketType.guild)
+    @commands.cooldown(1, 90, commands.BucketType.guild)
     @commands.admin_or_permissions(manage_nicknames=True)
     @commands.bot_has_permissions(manage_nicknames=True)
     async def resetnicks(self, ctx):
@@ -100,7 +100,7 @@ class MassThings(commands.Cog, command_attrs={"hidden": True}):
 
     @commands.command(aliases=["copyemojis"])
     @commands.guild_only()
-    @commands.cooldown(1, 300, commands.BucketType.guild)
+    @commands.cooldown(1, 180, commands.BucketType.guild)
     @commands.admin_or_permissions(manage_emojis=True)
     @commands.bot_has_permissions(manage_emojis=True)
     @commands.max_concurrency(1, commands.BucketType.guild)
@@ -162,7 +162,7 @@ class MassThings(commands.Cog, command_attrs={"hidden": True}):
 
     @commands.group()
     @commands.guild_only()
-    @commands.cooldown(1, 300, commands.BucketType.guild)
+    @commands.cooldown(1, 90, commands.BucketType.guild)
     @commands.admin_or_permissions(ban_members=True)
     @commands.bot_has_permissions(ban_members=True)
     @commands.max_concurrency(1, commands.BucketType.guild)
@@ -195,7 +195,7 @@ class MassThings(commands.Cog, command_attrs={"hidden": True}):
         )
 
     @massunban.command(name="all", aliases=["everyone"])
-    @commands.cooldown(1, 300, commands.BucketType.guild)
+    @commands.cooldown(1, 90, commands.BucketType.guild)
     @commands.max_concurrency(1, commands.BucketType.guild)
     async def massunban_all(self, ctx):
         """Unban everyone from current guild"""
